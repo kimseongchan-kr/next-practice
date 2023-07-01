@@ -16,8 +16,12 @@ const AppLayout = ({ children }: PropsWithChildren<any>) => {
     getItem(<SearchInput placeholder="input search text" />),
   ];
 
-  const submitLoginForm = () => {
+  const handleLoginFormSubmit = () => {
     setIsLoggedIn(true);
+  };
+
+  const handleLogoutButtonClick = () => {
+    setIsLoggedIn(false);
   };
 
   return (
@@ -26,9 +30,9 @@ const AppLayout = ({ children }: PropsWithChildren<any>) => {
       <Row gutter={8}>
         <Col xs={24} md={6}>
           {isLoggedIn ? (
-            <UserProfile />
+            <UserProfile onLogout={handleLogoutButtonClick} />
           ) : (
-            <LoginForm onFinish={submitLoginForm} />
+            <LoginForm onFinish={handleLoginFormSubmit} />
           )}
         </Col>
         <Col xs={24} md={12}>
