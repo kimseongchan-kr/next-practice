@@ -2,20 +2,24 @@ import React from 'react';
 import { Button, Form, Input, Typography } from 'antd';
 import Link from 'next/link';
 
-const LoginForm = () => {
+interface LoginFormProps {
+  onFinish: () => void;
+}
+
+const LoginForm = ({ onFinish }: LoginFormProps) => {
   return (
     <>
-      <Form>
+      <Form onFinish={onFinish}>
         <Form.Item>
           <Typography.Text>아이디</Typography.Text>
           <Input />
         </Form.Item>
         <Form.Item>
           <Typography.Text>비밀번호</Typography.Text>
-          <Input />
+          <Input type="password" />
         </Form.Item>
         <Form.Item>
-          <Button>로그인</Button>
+          <Button htmlType="submit">로그인</Button>
         </Form.Item>
       </Form>
       <div>

@@ -16,12 +16,20 @@ const AppLayout = ({ children }: PropsWithChildren<any>) => {
     getItem(<SearchInput placeholder="input search text" />),
   ];
 
+  const submitLoginForm = () => {
+    setIsLoggedIn(true);
+  };
+
   return (
     <div>
       <Menu theme="dark" mode="horizontal" items={item}></Menu>
       <Row gutter={8}>
         <Col xs={24} md={6}>
-          {isLoggedIn ? <UserProfile /> : <LoginForm />}
+          {isLoggedIn ? (
+            <UserProfile />
+          ) : (
+            <LoginForm onFinish={submitLoginForm} />
+          )}
         </Col>
         <Col xs={24} md={12}>
           {children}
